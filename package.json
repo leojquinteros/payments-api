@@ -1,24 +1,22 @@
 {
-  "name": "preferencepass.payments.micro",
-  "description": "Preference Pass subscription services",
-  "version": "0.0.0",
-  "main": "src/app.js",
+  "name": "api.payments.micro",
+  "version": "0.0.1",
+  "main": "app.js",
   "now": {
-    "name": "payments-preferencepass",
+    "name": "payments-api",
     "public": false,
     "alias": [
-      "dev.payments.preferencepass.xyz"
+      "dev.payments.xyz"
     ],
     "env": {
       "STRIPE_PRIVATE_KEY": "sk_test_ny6ghZN9qZRn50ShukKLMEee",
-      "GRAPHCOOL_SUBSCRIPTIONS_URI": "cj41c9u2zddol0177la66g30g",
-      "MANDRILL_API_KEY": "7GZhk_UytExYjiiB9briAw",
-      "MANDRILL_OWNER_EMAIL": "ep@preferencepass.com"
+      "GRAPHCOOL_URI": "cj41c9u2zddol0177la66g30g",
+      "MANDRILL_API_KEY": "7GZhk_UytExYjiiB9briAw"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:CeiboIT/api.payments.preferencepass.git"
+    "url": "git@github.com:leojquinteros/payments-api.git"
   },
   "scripts": {
     "start": "micro -p ${PORT:-3030}",
