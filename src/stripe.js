@@ -43,7 +43,7 @@ const createSourceForCostumer =  (req, res) => {
 }
 
 module.exports = {
-    create: async (req, res) => { 
+    createPayment: async (req, res) => { 
         const customer = await createSourceForCostumer(req);
         const charge = await createCharge(req, customer);
         await mailing.sendMail(req);

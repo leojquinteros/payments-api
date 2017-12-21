@@ -32,7 +32,6 @@
   "dependencies": {
     "apollo-client": "1.9.2",
     "graphql-tag": "^2.4.2",
-    "jsonwebtoken": "^7.4.1",
     "mandrill-api": "^1.0.45",
     "micro": "latest",
     "micro-cors": "^0.0.4",
