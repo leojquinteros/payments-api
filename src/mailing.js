@@ -4,7 +4,7 @@ const mandrill = require('mandrill-api/mandrill');
 const config = require('./config');
 const mandrill_client = new mandrill.Mandrill(config.mandrill.apikey);
 
-const sendMailToCustomer = (req, res) => {
+const sendEmail = (req, res) => {
     return new Promise( (resolve, reject) => {
         const template_content = [{
             "name": "name",
@@ -12,8 +12,8 @@ const sendMailToCustomer = (req, res) => {
         }];
         const message = {
             "subject": "Thank you for your payment!",
-            "from_email": "payments@leojquinteros.com",
-            "from_name": "Payments",
+            "from_email": "payments@verified-domain.com",
+            "from_name": "Payments API",
             "to": [{
                 "email": req.email
             }],
@@ -25,8 +25,12 @@ const sendMailToCustomer = (req, res) => {
                         "content": req.currency
                     },
                     {
-                        "name": "price",
-                        "content": req.price
+                        "name": "amount",
+                        "content": req.amount
+                    },
+                    {
+                        "name": "email",
+                        "content": req.email
                     },
                     {
                         "name": "date",
@@ -45,7 +49,7 @@ const sendMailToCustomer = (req, res) => {
             "send_at": moment()
             },
             (result) => {
-                console.log('[Mandrill] Email successfully sent: ', result);
+                console.log('[Mandrill] Result: ', result);
                 resolve(result);
             }, (err) => {
                 console.log('[Mandrill] An error occurred: ' + err.name + ' - ' + err.message);
@@ -57,7 +61,7 @@ const sendMailToCustomer = (req, res) => {
 }
 
 module.exports = {
-    sendMail: async (req, res) => {
-        return await sendMailToCustomer(req);
+    send: async (req, res) => {
+        return await sendEmail(req);
     }
 }

@@ -2,7 +2,7 @@
 const config = require('./config');
 const stripe = require('stripe')(config.stripe.privateKey);
 const payment = require('./payment');
-const mailing = require('./mandrill');
+const mailing = require('./mailing');
 stripe.setTimeout(20000);
 
 const createCharge = (req, customer) => {
@@ -42,7 +42,7 @@ module.exports = {
     createPayment: async (req, res) => { 
         const customer = await createCustomer(req);
         const charge = await createCharge(req, customer);
-        await mailing.sendMail(req);
+        await mailing.send(req);
         return await payment.save(req);  
     }
 }
