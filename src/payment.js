@@ -17,7 +17,7 @@ const addPayment = (req, res) => {
             variables: {
                 currency: req.currency,
                 price: req.price,
-                email: req.customerEmail
+                email: req.email
             }
         }).then(data => {
             console.log('Payment mutation response:', data);

@@ -1,7 +1,6 @@
 'use strict';
-const uuidv4 = require('uuid/v4');
 const config = require('./config');
-const stripe = require('stripe')(config.stripe.apikey);
+const stripe = require('stripe')(config.stripe.privateKey);
 const payment = require('./payment');
 const mailing = require('./mandrill');
 stripe.setTimeout(20000);
@@ -9,12 +8,11 @@ stripe.setTimeout(20000);
 const createCharge = (req, customer) => {
     return new Promise( (resolve, reject) => {
         stripe.charges.create({
-            amount: req.amount,
+            amount: req.amount * 100,
             currency: req.currency,
             customer: customer.id,
-            source: customer.default_source
-        }, {
-            idempotency_key: uuidv4()
+            source: customer.default_source,
+            description: 'Charge for ' + req.email
         },  (err, charge) => {
             if (err) {
                 reject(err);
@@ -25,13 +23,11 @@ const createCharge = (req, customer) => {
     });
 }
 
-const createSourceForCostumer =  (req, res) => {
+const createCustomer =  (req, res) => {
     return new Promise( (resolve, reject) => {
         stripe.customers.create({
-            description: 'Customer Payment for ' + req.customerEmail,
+            description: 'Customer for ' + req.email,
             source: req.cardToken
-        }, {
-            idempotency_key: uuidv4()
        }, (err, customer) => {
             if (err) {
                 reject(err);
@@ -44,7 +40,7 @@ const createSourceForCostumer =  (req, res) => {
 
 module.exports = {
     createPayment: async (req, res) => { 
-        const customer = await createSourceForCostumer(req);
+        const customer = await createCustomer(req);
         const charge = await createCharge(req, customer);
         await mailing.sendMail(req);
         return await payment.save(req);  

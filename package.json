@@ -9,9 +9,9 @@
       "dev.payments.xyz"
     ],
     "env": {
-      "STRIPE_PRIVATE_KEY": "sk_test_ny6ghZN9qZRn50ShukKLMEee",
-      "GRAPHCOOL_URI": "cj41c9u2zddol0177la66g30g",
-      "MANDRILL_API_KEY": "7GZhk_UytExYjiiB9briAw"
+      "STRIPE_PRIVATE_KEY": "STRIPE_PRIVATE_KEY_VALUE",
+      "GRAPHCOOL_URI": "GRAPHCOOL_URI_VALUE",
+      "MANDRILL_API_KEY": "MANDRILL_API_KEY_VALUE"
     }
   },
   "repository": {
@@ -38,8 +38,7 @@
     "microrouter": "^2.1.1",
     "moment": "^2.18.1",
     "node-fetch": "^1.7.2",
-    "stripe": "^4.23.1",
-    "uuid": "^3.1.0"
+    "stripe": "^4.23.1"
   },
   "license": "MIT",
   "devDependencies": {

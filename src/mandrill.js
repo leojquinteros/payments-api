@@ -15,10 +15,10 @@ const sendMailToCustomer = (req, res) => {
             "from_email": "payments@leojquinteros.com",
             "from_name": "Payments",
             "to": [{
-                "email": req.customerEmail
+                "email": req.email
             }],
             "merge_vars": [{
-                "rcpt": req.customerEmail,
+                "rcpt": req.email,
                 "vars": [
                     {
                         "name": "currency",
