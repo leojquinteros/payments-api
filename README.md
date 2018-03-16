@@ -1,2 +1,2 @@
 # payments-api
-Payments API using Stripe API, Zeit's microservices, Graphcool and Mandrill mailing platform
+Sample payments API using Stripe and Zeit's microservices
