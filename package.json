@@ -18,10 +18,10 @@
   },
   "scripts": {
     "start": "micro -p ${PORT:-3030}",
-    "lint": "xo",
-    "test": "standard && npm run lint && ava"
+    "lint": "standard",
+    "test": "npm run lint && ava"
   },
-  "xo": {
+  "standard": {
     "extends": "prettier"
   },
   "engines": {
@@ -40,7 +40,6 @@
     "prettier": "^1.2.2",
     "request-promise": "^4.2.0",
     "standard": "^11.0.1",
-    "test-listen": "^1.0.2",
-    "xo": "^0.18.1"
+    "test-listen": "^1.0.2"
   }
 }

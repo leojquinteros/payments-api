@@ -3,7 +3,7 @@ const config = require('../config/config')
 const stripe = require('stripe')(config.stripe.privateKey)
 stripe.setTimeout(20000)
 
-const createCustomer = (req, res) => {
+const createCustomer = (req) => {
   return new Promise((resolve, reject) => {
     stripe.customers.create({
       description: 'Customer for ' + req.email,
@@ -37,7 +37,7 @@ const createCharge = (req, customer) => {
 }
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (req) => {
     const customer = await createCustomer(req)
     const charge = await createCharge(req, customer)
     return charge

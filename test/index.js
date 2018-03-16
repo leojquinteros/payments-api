@@ -5,7 +5,7 @@ const listen = require('test-listen')
 const request = require('request-promise')
 
 // Service
-const service = require('../src')
+const service = require('../server/payment')
 
 test('my endpoint', async t => {
   const microInstance = micro(service)
