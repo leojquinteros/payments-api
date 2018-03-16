@@ -1,2 +1,2 @@
 # payments-api
-Sample payments API using Stripe and Zeit's microservices
+Sample payments API using Stripe, zeit's [micro](https://github.com/zeit/micro) and [now](https://zeit.co/now)
